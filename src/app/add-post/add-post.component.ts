@@ -18,25 +18,25 @@ export class AddPostComponent implements OnInit {
   //  || this.f.company_id.hasError('required')){
   //     this.toast.error({detail:"Error Message",summary:"please fill all the blanks!",duration:5000})
   //   }else{
-    this.P.addUser(this.addForm.value).subscribe(
-      res=>{
-        this.user=res
-        console.log('res',this.user)
+    // this.P.addUser(this.addForm.value).subscribe(
+    //   res=>{
+    //     this.user=res
+    //     console.log('res',this.user)
 
-        this.toast.success({detail:"Success Message",summary:this.user.message,duration:5000})
-        setTimeout(function(){window.location.reload(); }, 6000);
+    //     this.toast.success({detail:"Success Message",summary:this.user.message,duration:5000})
+    //     setTimeout(function(){window.location.reload(); }, 6000);
 
 
-    },
-    err=>{
-      this.erreur=err
-      console.log("erreur",this.erreur)
-      let message= this.erreur && this.erreur.error && this.erreur.error.message && this.erreur.error.errors && this.erreur.error.errors.email[0]
-      console.log('err', message)
-      this.toast.error({detail:"Error Message",summary:message,duration:5000})
+    // },
+    // err=>{
+    //   this.erreur=err
+    //   console.log("erreur",this.erreur)
+    //   let message= this.erreur && this.erreur.error && this.erreur.error.message && this.erreur.error.errors && this.erreur.error.errors.email[0]
+    //   console.log('err', message)
+    //   this.toast.error({detail:"Error Message",summary:message,duration:5000})
 
-    }
-    )
+    // }
+    // )
   // }
 
 

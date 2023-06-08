@@ -12,12 +12,16 @@ import {MatInputModule} from '@angular/material/input';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button'
 import { ReactiveFormsModule } from '@angular/forms';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PostComponentComponent,
-    AddPostComponent
+    AddPostComponent,
+    NavBarComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
