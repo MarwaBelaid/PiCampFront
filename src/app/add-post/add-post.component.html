@@ -1,38 +1,43 @@
-
 <div>
-    <h1 mat-dialog-title>Ajouter Publication</h1>
-    <div>
-      <img class="img" src="assets/img/addpost.png" style="width:40%; margin-left: 30%;"  alt="">
-    </div>
-  
-    <div mat-dialog-content>
-      <form   >
-          <div  style="margin-right: 60% " >
-            <p class="ligne">Sujet Publication:</p>
-          <mat-form-field >
-            <mat-label><mat-icon class="icon" aria-hidden="false" aria-label="Example email icon">subject</mat-icon>
-  
-              Sujet Publication
-            </mat-label>
-            <input matInput formControlName="name" >
-          </mat-form-field>
-          <div ></div>
-          </div>
-          <div style="margin-left: 60%; margin-top: -15.9%;">
-            <p class="ligne">Contenu Publication :</p>
-            <mat-form-field >
-              <mat-label><mat-icon class="icon" aria-hidden="false" aria-label="Example email icon">receipt</mat-icon>
-                Contenu Publication
-              </mat-label>
-              <input matInput formControlName="email" >
-            </mat-form-field>
-          </div>
-  
-      </form>
-  
-    </div>
-    <div mat-dialog-actions >
-      <button mat-raised-button class="btn" mat-dialog-close>Cancel</button>
-      <button mat-raised-button class="button-save" color="primary"  mat-dialog-close (click)="addPost()" >Save</button>
-    </div>
-  
+  <h1 mat-dialog-title>Ajouter Publication</h1>
+  <div>
+    <img class="img" src="assets/img/add.png" style="width:40%; margin-left: 30%;" alt="">
+  </div>
+ 
+  <div mat-dialog-content cdkScrollable>
+    <form [formGroup]="addForm" enctype="multipart/form-data" >
+      <div style="margin-right: 60% ">
+        <p class="ligne">Sujet Publication:</p>
+        <mat-form-field>
+          <mat-label><mat-icon class="icon" aria-hidden="false" aria-label="Example email icon">subject</mat-icon>
+
+            Sujet Publication
+          </mat-label>
+          <input matInput formControlName="sujet">
+        </mat-form-field>
+        <div></div>
+      </div>
+      <div style="margin-left: 60%; margin-top: -14.9%;">
+        <p class="ligne">Contenu Publication :</p>
+        <mat-form-field>
+          <mat-label><mat-icon class="icon" aria-hidden="false" aria-label="Example email icon">receipt</mat-icon>
+            Contenu Publication
+          </mat-label>
+          <input matInput formControlName="contenu">
+        </mat-form-field>
+      </div>
+      <div>
+        <label>Télécharger une image: </label> <br> <br>
+        <input type="file" accept="image/*" (change)="onSelectFile($event)" >
+
+        <img [src]="imgURL" height="200" *ngIf="imgURL">
+      </div>
+
+  </form>
+
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button class="btn" mat-dialog-close>Cancel</button>
+  <button mat-raised-button class="button-save" style="background-color :#86B817;color:white" mat-dialog-close
+    (click)="addPost()">Save</button>
+</div>
