@@ -2,3 +2,8 @@
     color: white;
     margin-left: 90%;
 }
+.card-image {
+    height: 200px; /* Ajustez cette valeur en fonction de la hauteur souhaitée pour les images */
+    object-fit: cover;
+  }
+  

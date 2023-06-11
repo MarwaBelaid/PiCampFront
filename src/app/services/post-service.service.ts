@@ -19,4 +19,10 @@ export class PostServiceService {
     console.log('adding');
     return this.http.post(`http://127.0.0.1:8082/CampProject/posts/create`,post);
   }
+  updateLike(id:any,liked:boolean,likes:any){
+    console.log('dattaa',likes);
+    return this.http.put(`http://127.0.0.1:8082/CampProject/posts/like/${id}?liked=${liked}`,likes);
+
+    
+  }
 }
