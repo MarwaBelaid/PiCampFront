@@ -16,4 +16,8 @@ export class BoutiqueService {
   fetchProducts(): Observable<Equipement[]> {
     return this.http.get<Equipement[]>(this.productsUrl + 'product/all');
   }
+
+  fetchImagePath(id:any):Observable<string>{
+    return this.http.get<string>(this.productsUrl+'product/image/' +id)
+     }
 }

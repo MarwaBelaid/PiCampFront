@@ -74,6 +74,7 @@ ol {
 
 .section-title {
 	margin-bottom: 50px;
+  left: 400px;
 	text-align: center;
 }
 
@@ -866,7 +867,7 @@ ol {
 	line-height: 40px;
 	text-align: center;
 	border: 1px solid #ebebeb;
-	background: #ffffff;
+	background: #bfa41c;
 	display: block;
 	border-radius: 50%;
 	-webkit-transition: all, 0.5s;

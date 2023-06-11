@@ -17,6 +17,8 @@ export class ListProductsComponent implements OnInit {
       this.list = result;
       console.log(this.list);
     });
+
+
   }
 
 }
