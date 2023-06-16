@@ -15,9 +15,9 @@ export class PostServiceService {
     
   }
   
-  createPost(post:FormData){
+  createPost(post:FormData,idUser=1){
     console.log('adding');
-    return this.http.post(`http://127.0.0.1:8082/CampProject/posts/create`,post);
+    return this.http.post(`http://127.0.0.1:8082/CampProject/posts/create/${idUser}`,post);
   }
   updateLike(id:any,liked:boolean,likes:any){
     console.log('dattaa',likes);

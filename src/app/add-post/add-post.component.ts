@@ -19,6 +19,7 @@ export class AddPostComponent implements OnInit {
   addForm !: FormGroup;
   post: any
   erreur: any
+  idUser: any
 
   constructor(private form: FormBuilder, private postService: PostServiceService) { }
 
@@ -47,7 +48,7 @@ export class AddPostComponent implements OnInit {
       formData.append('sujet', this.addForm.value.sujet);
       formData.append('contenu', this.addForm.value.contenu);
       formData.append('image_path', this.userFile);
-      this.postService.createPost(formData).subscribe(
+      this.postService.createPost(formData,this.idUser=1).subscribe(
         res => {
           this.post = res
           
