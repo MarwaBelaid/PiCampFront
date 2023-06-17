@@ -18,7 +18,6 @@ import { ListProductsComponent } from './boutique/list-products/list-products.co
 import { DetailProductComponent } from './boutique/detail-product/detail-product.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ShoppingCartComponent } from './boutique/shopping-cart/shopping-cart.component';
-import { SearchBarComponent } from './boutique/search-bar/search-bar.component';
 
 @NgModule({
   declarations: [
@@ -29,8 +28,7 @@ import { SearchBarComponent } from './boutique/search-bar/search-bar.component';
     HomeComponent,
     ListProductsComponent,
     DetailProductComponent,
-    ShoppingCartComponent,
-    SearchBarComponent,
+    ShoppingCartComponent
   ],
   imports: [
     BrowserModule,
