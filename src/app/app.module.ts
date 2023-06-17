@@ -28,7 +28,7 @@ import { ShoppingCartComponent } from './boutique/shopping-cart/shopping-cart.co
     HomeComponent,
     ListProductsComponent,
     DetailProductComponent,
-    ShoppingCartComponent
+    ShoppingCartComponent,
   ],
   imports: [
     BrowserModule,
