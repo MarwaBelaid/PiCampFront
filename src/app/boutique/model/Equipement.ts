@@ -1,6 +1,6 @@
 export class Equipement {
 
-  public id_equipement!: string;
+  public id_equipement!: number;
   public categorie!: string;
   public description!: string;
   public nom!: string;

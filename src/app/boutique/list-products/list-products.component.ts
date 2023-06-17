@@ -17,8 +17,19 @@ export class ListProductsComponent implements OnInit {
       this.list = result;
       console.log(this.list);
     });
-
-
   }
+
+  addToCart(idProduct: number,idClient: number,qty:number) {
+    this.boutiqueService.PasserCommande(idProduct,idClient,qty).subscribe(
+      (result)=>{
+        console.log('*******************')
+        console.log(result)
+      },
+      (err) => {
+        console.log(err);
+      }
+    )
+  }
+
 
 }

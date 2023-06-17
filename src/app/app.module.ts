@@ -17,6 +17,7 @@ import { HomeComponent } from './home/home.component';
 import { ListProductsComponent } from './boutique/list-products/list-products.component';
 import { DetailProductComponent } from './boutique/detail-product/detail-product.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ShoppingCartComponent } from './boutique/shopping-cart/shopping-cart.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { HttpClientModule } from '@angular/common/http';
     NavBarComponent,
     HomeComponent,
     ListProductsComponent,
-    DetailProductComponent
+    DetailProductComponent,
+    ShoppingCartComponent
   ],
   imports: [
     BrowserModule,
