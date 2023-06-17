@@ -5,8 +5,6 @@ $(document).ready(function() {
   maxamount = $("#maxamount"),
   minPrice = rangeSlider.data('min'),
   maxPrice = rangeSlider.data('max');
-  console.log("aaaaaaaaaaaaaaaaaaaaa");
-  console.log(rangeSlider);
 rangeSlider.slider({
   range: true,
   min: minPrice,

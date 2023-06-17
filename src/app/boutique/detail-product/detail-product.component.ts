@@ -25,12 +25,18 @@ export class DetailProductComponent implements OnInit {
   }
   addToCart(idProduct: number,idClient: number,qty:number) {
     this.boutiqueService.PasserCommande(idProduct,idClient,qty).subscribe(
-      (result)=>{
+      ()=>{
         console.log('*******************commande passer from details')
-        console.log(result)
+        alert("commande passer avec succée")
       },
       (err) => {
         console.log(err);
+        if(err.status==200){
+          alert("commande passer avec succée")
+
+        }else{
+          alert("il ya eu une erreur essayer plus tard!")
+        }
       }
     )
   }
