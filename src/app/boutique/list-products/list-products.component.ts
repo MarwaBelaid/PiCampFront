@@ -22,7 +22,7 @@ export class ListProductsComponent implements OnInit {
   addToCart(idProduct: number,idClient: number,qty:number) {
     this.boutiqueService.PasserCommande(idProduct,idClient,qty).subscribe(
       (result)=>{
-        console.log('*******************')
+        console.log('*******************commande passer')
         console.log(result)
       },
       (err) => {

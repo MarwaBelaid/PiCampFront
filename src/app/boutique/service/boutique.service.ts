@@ -24,7 +24,9 @@ export class BoutiqueService {
     return this.http.post(url, requestBody);
   }
 
-
+  getProductById(id:any):Observable<Equipement>{
+    return this.http.get<Equipement>(this.productsUrl + `product/${id}`)
+     }
 
 
 }

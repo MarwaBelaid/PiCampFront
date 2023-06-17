@@ -1,1 +1,44 @@
-<p>detail-product works!</p>
+<app-nav-bar></app-nav-bar>
+<section class="product-details spad">
+  <div class="container">
+      <div class="row">
+          <div class="col-lg-6 col-md-6">
+              <div class="product__details__pic">
+                  <div class="product__details__pic__item">
+                      <img class="product__details__pic__item--large"
+                      src="{{ equipement.photosImagePath }}" alt="">
+                  </div>
+              </div>
+          </div>
+          <div class="col-lg-6 col-md-6">
+              <div class="product__details__text">
+                  <h3>{{ equipement.nom }}</h3>
+                  <div class="product__details__rating">
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star-half-o"></i>
+                      <span>(18 reviews)</span>
+                  </div>
+                  <div class="product__details__price">{{ equipement.prix }}.Dn</div>
+                  <p>{{ equipement.description }}</p>
+                  <div class="product__details__quantity">
+                      <div class="quantity">
+                          <div class="pro-qty">
+                            <samp>Quantity</samp>
+                              <input type="text" [disabled]="equipement.status !== 'disponible'" [(ngModel)]="qty" value="{{qty}}">
+                          </div>
+                      </div>
+                  </div>
+                  <button type="submit" class="primary-btn" [disabled]="equipement.status !== 'disponible'" [ngClass]="{'addtocart': equipement.status !== 'disponible'}" (click)="addToCart(equipement.id_equipement, 4, qty)">ADD TO CART</button>
+                  <ul>
+                      <li><b>Availability</b>
+                        <span *ngIf="equipement.status=='disponible'">In Stock</span>
+                        <span *ngIf="equipement.status!='disponible'">Out of Stock</span></li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
