@@ -4,6 +4,7 @@
 @import "assets/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css";
 @import "assets/css/bootstrap.min.css";
 @import "assets/css/style.css";
+@import "assets/css/font-awesome.min.css";
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

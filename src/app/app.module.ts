@@ -2,8 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
-import { FormsModule } from '@angular/forms';
-
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PostComponentComponent } from './post-component/post-component.component';
@@ -14,11 +12,14 @@ import {MatInputModule} from '@angular/material/input';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { ReactiveFormsModule } from '@angular/forms';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { HomeComponent } from './home/home.component';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 // import {NgToastModule} from 'ng-angular-popup';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ListProductsComponent } from './boutique/list-products/list-products.component';
+import { DetailProductComponent } from './boutique/detail-product/detail-product.component';
+import { ShoppingCartComponent } from './boutique/shopping-cart/shopping-cart.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,10 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
     PostComponentComponent,
     AddPostComponent,
     NavBarComponent,
-    HomeComponent
+    HomeComponent,
+    ListProductsComponent,
+    DetailProductComponent,
+    ShoppingCartComponent
   ],
   imports: [
     ScrollingModule,
@@ -43,7 +47,8 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
     ReactiveFormsModule,
     MatToolbarModule,
     // NgToastModule
-    
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
