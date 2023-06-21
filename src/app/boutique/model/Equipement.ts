@@ -8,6 +8,8 @@ export class Equipement {
   public status!: string;
   public equipement_centre_camp!: number;
   public photos!: string;
+  public color!: string;
+  public size!: string;
   public photosImagePath!: string;
 
 }
