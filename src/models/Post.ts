@@ -4,6 +4,7 @@ export class Post{
     public contenu!:string;
     public image_path!:string;
     public liked!:boolean;
+    public date_creation!:string;
     
   
   }

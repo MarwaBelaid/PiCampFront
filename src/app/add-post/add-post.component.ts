@@ -21,8 +21,10 @@ export class AddPostComponent implements OnInit {
   erreur: any
   idUser: any
 
+  
+  
   constructor(private form: FormBuilder, private postService: PostServiceService) { }
-
+  
   ngOnInit(): void {
     this.add();
   }
@@ -45,9 +47,11 @@ export class AddPostComponent implements OnInit {
       alert('fr')
     } else {
       const formData = new FormData();
+
       formData.append('sujet', this.addForm.value.sujet);
       formData.append('contenu', this.addForm.value.contenu);
       formData.append('image_path', this.userFile);
+  
       this.postService.createPost(formData,this.idUser=1).subscribe(
         res => {
           this.post = res

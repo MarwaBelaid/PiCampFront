@@ -37,11 +37,16 @@
                                 <mat-icon>share</mat-icon>
                             </button>
                         </div>
+                        <div class="comments">
+                            <div *ngFor="let comment of item.commentaires">
+                              <p>{{ comment.contenu_commentaire }}</p>
+                            </div>
+                          </div>
                         <div class="d-flex mb-2" *ngIf="item.commentVisible">
                             <div class="col-12 d-flex  mb-2">
                                 <mat-form-field class="example-full-width" style="width: 100%;">
                                     <mat-label>Leave a comment</mat-label>
-                                    <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
+                                    <textarea matInput placeholder="Ex. It makes me feel..." name="comment" [(ngModel)]="comment" (keyup.enter)="addComment(item)"></textarea>
                                 </mat-form-field>
                             </div>
                         </div>

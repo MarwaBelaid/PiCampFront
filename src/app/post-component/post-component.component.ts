@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatDialogModule } from '@angular/material/dialog';
-import { DomSanitizer, SafeResourceUrl, SafeUrl } from '@angular/platform-browser';
 import { AddPostComponent } from '../add-post/add-post.component';
 import { PostServiceService } from '../services/post-service.service';
-import { NgxImageCompressService } from 'ngx-image-compress';
+import { CommentServiceService } from '../services/comment-service.service';
+
 @Component({
   selector: 'app-post-component',
   templateUrl: './post-component.component.html',
@@ -14,15 +14,20 @@ export class PostComponentComponent implements OnInit {
   posts: any;
   likes: any
   commentVisible: boolean = false;
-
+  idUser: any
   isFavorite: boolean = false;
-  constructor(private dialog: MatDialog, private postService: PostServiceService) { }
+  comment: any;
+  commentData:any
+  comments:any
+
+  constructor(private dialog: MatDialog, private postService: PostServiceService, private commentService: CommentServiceService) { }
 
   ngOnInit(): void {
     this.readAllPosts();
+    
 
   }
-  toggleCommentVisibility(item:any) {
+  toggleCommentVisibility(item: any) {
     item.commentVisible = !item.commentVisible;
   }
 
@@ -42,7 +47,19 @@ export class PostComponentComponent implements OnInit {
   }
 
 
+  addComment(item: any) {
+    
+    this.commentService.addComment(this.comment, this.idUser = 1, item.id).subscribe(
+      result => {
+        // console.log('datacomment',item.id)
+        // this.getComment(item.id);
+      },
+      error => {
+        console.log(error);
+      }
 
+    )
+  }
 
   addPost() {
     this.dialog.open(AddPostComponent, {
@@ -56,6 +73,8 @@ export class PostComponentComponent implements OnInit {
     this.postService.getAllPosts().subscribe(
       data => {
         this.posts = data;
+        this.comments = this.posts.commentaires;
+        console.log('here',this.posts);
       },
       error => {
         console.log(error);
