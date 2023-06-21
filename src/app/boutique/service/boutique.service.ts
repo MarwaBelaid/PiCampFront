@@ -10,7 +10,7 @@ import { Commande } from '../model/Commande';
 export class BoutiqueService {
 
 
-  private productsUrl: string = '/api/CampProject/';
+  private productsUrl: string = 'http://127.0.0.1:8082/CampProject/';
 
   constructor(private http: HttpClient) { }
 
