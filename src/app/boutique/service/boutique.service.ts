@@ -29,4 +29,8 @@ export class BoutiqueService {
      }
 
 
+  searchProducts(priceMin : any,priceMax:any,size:any,color:any,catg:any): Observable<Equipement[]> {
+    return this.http.get<Equipement[]>(this.productsUrl + `product/search?priceMin=${priceMin}&priceMax=${priceMax}&size=${size}&color=${color}&catg=${catg}`);
+  }
+
 }

@@ -1141,28 +1141,28 @@ ol {
 	width: 40%;
 }
 
-.sidebar__item__color.sidebar__item__color--white label:after {
+.sidebar__item__color.sidebar__item__color--White label:after {
 	border: 2px solid #333333;
 	background: transparent;
 }
 
-.sidebar__item__color.sidebar__item__color--gray label:after {
+.sidebar__item__color.sidebar__item__color--Gray label:after {
 	background: #E9A625;
 }
 
-.sidebar__item__color.sidebar__item__color--red label:after {
+.sidebar__item__color.sidebar__item__color--Red label:after {
 	background: #D62D2D;
 }
 
-.sidebar__item__color.sidebar__item__color--black label:after {
+.sidebar__item__color.sidebar__item__color--Black label:after {
 	background: #252525;
 }
 
-.sidebar__item__color.sidebar__item__color--blue label:after {
+.sidebar__item__color.sidebar__item__color--Blue label:after {
 	background: #249BC8;
 }
 
-.sidebar__item__color.sidebar__item__color--green label:after {
+.sidebar__item__color.sidebar__item__color--Green label:after {
 	background: #3CC032;
 }
 

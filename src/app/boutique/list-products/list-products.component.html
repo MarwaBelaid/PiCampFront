@@ -6,11 +6,14 @@
               <div class="sidebar">
                   <div class="sidebar__item">
                       <h4>Categories</h4>
-                      <ul>
-                          <li><a href="#">ALL</a></li>
-                          <li><a href="#">SHOES</a></li>
-                          <li><a href="#">CAMP MATERIALS</a></li>
-                          <li><a href="#">CLOTHES</a></li>
+                      <ul *ngFor="let catgorie of categories; index as i">
+
+                        <div class="sidebar__item__size">
+                          <label for={{catgorie.name}}>
+                            {{catgorie.name}}
+                              <input type="radio" [(ngModel)]="catgorie.name" id={{catgorie.name}}>
+                          </label>
+                      </div>
                       </ul>
                   </div>
                   <div class="sidebar__item">
@@ -24,77 +27,37 @@
                           </div>
                           <div class="range-slider">
                               <div class="price-input">
-                                  <input type="text" id="minamount">
-                                  <input type="text" id="maxamount">
+                                  <input type="text" [(ngModel)]="priceMin" id="minamount">
+                                  <input type="text" [(ngModel)]="priceMax" id="maxamount">
                               </div>
                           </div>
                       </div>
                   </div>
                   <div class="sidebar__item sidebar__item__color--option">
                       <h4>Colors</h4>
-                      <div class="sidebar__item__color sidebar__item__color--white">
-                          <label for="white">
-                              White
-                              <input type="radio" id="white">
+                      <ul *ngFor="let colored of color; index as i">
+                        <li>
+                      <div class="sidebar__item__color sidebar__item__color--{{colored.name}}">
+                          <label for={{colored.name}}>
+                            {{colored.name}}
+                              <input type="radio" [(ngModel)]="colored.name" id= {{colored.name}}>
                           </label>
                       </div>
-                      <div class="sidebar__item__color sidebar__item__color--gray">
-                          <label for="gray">
-                              Gray
-                              <input type="radio" id="gray">
-                          </label>
-                      </div>
-                      <div class="sidebar__item__color sidebar__item__color--red">
-                          <label for="red">
-                              Red
-                              <input type="radio" id="red">
-                          </label>
-                      </div>
-                      <div class="sidebar__item__color sidebar__item__color--black">
-                          <label for="black">
-                              Black
-                              <input type="radio" id="black">
-                          </label>
-                      </div>
-                      <div class="sidebar__item__color sidebar__item__color--blue">
-                          <label for="blue">
-                              Blue
-                              <input type="radio" id="blue">
-                          </label>
-                      </div>
-                      <div class="sidebar__item__color sidebar__item__color--green">
-                          <label for="green">
-                              Green
-                              <input type="radio" id="green">
-                          </label>
-                      </div>
+                      </li>
+                      </ul>
                   </div>
                   <div class="sidebar__item">
                       <h4>Popular Size</h4>
-                      <div class="sidebar__item__size">
-                          <label for="large">
-                              Large
-                              <input type="radio" id="large">
-                          </label>
-                      </div>
-                      <div class="sidebar__item__size">
-                          <label for="medium">
-                              Medium
-                              <input type="radio" id="medium">
-                          </label>
-                      </div>
-                      <div class="sidebar__item__size">
-                          <label for="small">
-                              Small
-                              <input type="radio" id="small">
-                          </label>
-                      </div>
-                      <div class="sidebar__item__size">
-                          <label for="tiny">
-                              Tiny
-                              <input type="radio" id="tiny">
-                          </label>
-                      </div>
+                      <ul *ngFor="let sized of size; index as i">
+                        <li>
+                          <div class="sidebar__item__size">
+                            <label for={{sized.name}}>
+                                {{sized.name}}
+                                <input type="radio" [(ngModel)]="sized.name" id={{sized.name}}>
+                            </label>
+                        </div>
+                        </li>
+                      </ul>
                   </div>
               </div>
           </div>
