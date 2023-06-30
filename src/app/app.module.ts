@@ -18,6 +18,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { HomeComponent } from './home/home.component';
 import { ScrollingModule } from '@angular/cdk/scrolling';
+import { MatListModule } from '@angular/material/list';
+
 // import {NgToastModule} from 'ng-angular-popup';
 
 @NgModule({
@@ -42,6 +44,7 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
     MatInputModule,
     ReactiveFormsModule,
     MatToolbarModule,
+    MatListModule
     // NgToastModule
     
   ],
