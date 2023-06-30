@@ -4,6 +4,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { AddPostComponent } from '../add-post/add-post.component';
 import { PostServiceService } from '../services/post-service.service';
 import { CommentServiceService } from '../services/comment-service.service';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-post-component',
@@ -17,14 +18,15 @@ export class PostComponentComponent implements OnInit {
   idUser: any
   isFavorite: boolean = false;
   comment: any;
-  commentData:any
-  comments:any
+  commentData: any
+  comments: any
+  user:any
 
   constructor(private dialog: MatDialog, private postService: PostServiceService, private commentService: CommentServiceService) { }
 
   ngOnInit(): void {
     this.readAllPosts();
-    
+
 
   }
   toggleCommentVisibility(item: any) {
@@ -34,8 +36,11 @@ export class PostComponentComponent implements OnInit {
   toggleFavorite(item: any) {
     if (item.liked == false) {
       item.nbLike += 1;
-    }
-    item.liked = true
+      item.liked = true
+    }else{
+      item.nbLike -= 1;
+      item.liked = false
+    }    
     this.postService.updateLike(item.id, item.liked, item.nbLike).subscribe(
       result => {
         console.log(result);
@@ -48,11 +53,20 @@ export class PostComponentComponent implements OnInit {
 
 
   addComment(item: any) {
-    
+
     this.commentService.addComment(this.comment, this.idUser = 1, item.id).subscribe(
       result => {
-        // console.log('datacomment',item.id)
-        // this.getComment(item.id);
+        const formattedDate = formatDate(new Date(), 'yyyy-MM-dd ', 'en-US');
+       
+        // Mettre à jour la liste des commentaires avec le nouveau commentaire
+        item.commentaires.push({
+           contenu_commentaire: this.comment,
+           date_creation:formattedDate
+     
+         });
+
+        // Réinitialiser la variable comment pour effacer le contenu du textarea
+        this.comment = '';
       },
       error => {
         console.log(error);
