@@ -21,4 +21,10 @@ export class CommentServiceService {
     return this.http.get<Comment[]>(`http://127.0.0.1:8082/CampProject/comments/get/all/${idComment}`);
     
   }
+  updateLike(id:any,liked:boolean){
+    console.log('comment',id,liked)  
+    return this.http.put(`http://127.0.0.1:8082/CampProject/comments/like/${id}?liked=${liked}`,[]);
+
+    
+  }
 }

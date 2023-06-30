@@ -15,6 +15,7 @@ export class PostComponentComponent implements OnInit {
   posts: any;
   likes: any
   commentVisible: boolean = false;
+  commentResponse: boolean = false;
   idUser: any
   isFavorite: boolean = false;
   comment: any;
@@ -32,6 +33,9 @@ export class PostComponentComponent implements OnInit {
   toggleCommentVisibility(item: any) {
     item.commentVisible = !item.commentVisible;
   }
+  toggleCommentResponseVisibility(comment: any) {
+    comment.commentResponse = !comment.commentResponse;
+  }
 
   toggleFavorite(item: any) {
     if (item.liked == false) {
@@ -42,6 +46,22 @@ export class PostComponentComponent implements OnInit {
       item.liked = false
     }    
     this.postService.updateLike(item.id, item.liked, item.nbLike).subscribe(
+      result => {
+        console.log(result);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+  likeComment(comment: any) {
+    if (comment.liked == false) {
+      comment.liked = true
+    }else{
+      comment.liked = false
+    }
+      
+    this.commentService.updateLike(comment.id_commentaire, comment.liked).subscribe(
       result => {
         console.log(result);
       },
