@@ -16,10 +16,11 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { HomeComponent } from './home/home.component';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 // import {NgToastModule} from 'ng-angular-popup';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 import { ListProductsComponent } from './boutique/list-products/list-products.component';
 import { DetailProductComponent } from './boutique/detail-product/detail-product.component';
 import { ShoppingCartComponent } from './boutique/shopping-cart/shopping-cart.component';
+import { CheckoutComponent } from './boutique/checkout/checkout.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { ShoppingCartComponent } from './boutique/shopping-cart/shopping-cart.co
     HomeComponent,
     ListProductsComponent,
     DetailProductComponent,
-    ShoppingCartComponent
+    ShoppingCartComponent,
+    CheckoutComponent
   ],
   imports: [
     ScrollingModule,

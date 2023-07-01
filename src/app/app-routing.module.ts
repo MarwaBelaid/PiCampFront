@@ -4,6 +4,8 @@ import { PostComponentComponent } from './post-component/post-component.componen
 import { HomeComponent } from './home/home.component';
 import { ListProductsComponent } from './boutique/list-products/list-products.component';
 import { DetailProductComponent } from './boutique/detail-product/detail-product.component';
+import { ShoppingCartComponent } from './boutique/shopping-cart/shopping-cart.component';
+import { CheckoutComponent } from './boutique/checkout/checkout.component';
 
 const routes: Routes = [
   {path : '' ,redirectTo:'/home', pathMatch:'full'},
@@ -22,6 +24,14 @@ const routes: Routes = [
   {
     path:'detail-equipment/:id',
     component: DetailProductComponent
+  },
+  {
+    path:'cart',
+    component: ShoppingCartComponent
+  },
+  {
+    path:'checkout',
+    component: CheckoutComponent
   },
 ];
 

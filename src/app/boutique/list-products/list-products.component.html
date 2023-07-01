@@ -11,7 +11,7 @@
                         <div class="sidebar__item__size">
                           <label for={{catgorie.name}}>
                             {{catgorie.name}}
-                              <input type="radio" [(ngModel)]="catgorie.name" id={{catgorie.name}}>
+                              <input type="radio" (click)="selectedCategory=catgorie.name; search(priceMin, priceMax, selectedSize, selectedColor, selectedCategory)" [id]="catgorie.name">
                           </label>
                       </div>
                       </ul>
@@ -27,8 +27,12 @@
                           </div>
                           <div class="range-slider">
                               <div class="price-input">
-                                  <input type="text" [(ngModel)]="priceMin" id="minamount">
-                                  <input type="text" [(ngModel)]="priceMax" id="maxamount">
+
+                                <form (submit)="onSubmit()">
+                                  <input type="text" name="priceMin" [(ngModel)]="priceMin" id="minamount">
+                                  <input type="text" name="priceMax" [(ngModel)]="priceMax" id="maxamount">
+                                  <button type="submit">submit</button>
+                               </form>
                               </div>
                           </div>
                       </div>
@@ -40,7 +44,7 @@
                       <div class="sidebar__item__color sidebar__item__color--{{colored.name}}">
                           <label for={{colored.name}}>
                             {{colored.name}}
-                              <input type="radio" [(ngModel)]="colored.name" id= {{colored.name}}>
+                              <input type="radio" (click)="selectedColor=colored.name; search(priceMin, priceMax, selectedSize, selectedColor, selectedCategory)" [id]="colored.name" >
                           </label>
                       </div>
                       </li>
@@ -53,7 +57,7 @@
                           <div class="sidebar__item__size">
                             <label for={{sized.name}}>
                                 {{sized.name}}
-                                <input type="radio" [(ngModel)]="sized.name" id={{sized.name}}>
+                                <input type="radio"(click)="selectedSize=sized.name;  search(priceMin, priceMax, selectedSize, selectedColor, selectedCategory)" [id]="sized.name" >
                             </label>
                         </div>
                         </li>
@@ -62,124 +66,6 @@
               </div>
           </div>
           <div class="col-lg-9 col-md-7">
-              <!-- <div class="product__discount">
-                  <div class="section-title product__discount__title">
-                      <h2>Sale Off</h2>
-                  </div>
-                  <div class="row">
-                      <div class="product__discount__slider owl-carousel">
-                          <div class="col-lg-4">
-                              <div class="product__discount__item">
-                                  <div class="product__discount__item__pic set-bg"
-                                      data-setbg="img/product/discount/pd-1.jpg">
-                                      <div class="product__discount__percent">-20%</div>
-                                      <ul class="product__item__pic__hover">
-                                          <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                          <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                          <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                      </ul>
-                                  </div>
-                                  <div class="product__discount__item__text">
-                                      <span>Dried Fruit</span>
-                                      <h5><a href="#">Raisin’n’nuts</a></h5>
-                                      <div class="product__item__price">$30.00 <span>$36.00</span></div>
-                                  </div>
-                              </div>
-                          </div>
-                          <div class="col-lg-4">
-                              <div class="product__discount__item">
-                                  <div class="product__discount__item__pic set-bg"
-                                      data-setbg="img/product/discount/pd-2.jpg">
-                                      <div class="product__discount__percent">-20%</div>
-                                      <ul class="product__item__pic__hover">
-                                          <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                          <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                          <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                      </ul>
-                                  </div>
-                                  <div class="product__discount__item__text">
-                                      <span>Vegetables</span>
-                                      <h5><a href="#">Vegetables’package</a></h5>
-                                      <div class="product__item__price">$30.00 <span>$36.00</span></div>
-                                  </div>
-                              </div>
-                          </div>
-                          <div class="col-lg-4">
-                              <div class="product__discount__item">
-                                  <div class="product__discount__item__pic set-bg"
-                                      data-setbg="img/product/discount/pd-3.jpg">
-                                      <div class="product__discount__percent">-20%</div>
-                                      <ul class="product__item__pic__hover">
-                                          <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                          <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                          <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                      </ul>
-                                  </div>
-                                  <div class="product__discount__item__text">
-                                      <span>Dried Fruit</span>
-                                      <h5><a href="#">Mixed Fruitss</a></h5>
-                                      <div class="product__item__price">$30.00 <span>$36.00</span></div>
-                                  </div>
-                              </div>
-                          </div>
-                          <div class="col-lg-4">
-                              <div class="product__discount__item">
-                                  <div class="product__discount__item__pic set-bg"
-                                      data-setbg="img/product/discount/pd-4.jpg">
-                                      <div class="product__discount__percent">-20%</div>
-                                      <ul class="product__item__pic__hover">
-                                          <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                          <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                          <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                      </ul>
-                                  </div>
-                                  <div class="product__discount__item__text">
-                                      <span>Dried Fruit</span>
-                                      <h5><a href="#">Raisin’n’nuts</a></h5>
-                                      <div class="product__item__price">$30.00 <span>$36.00</span></div>
-                                  </div>
-                              </div>
-                          </div>
-                          <div class="col-lg-4">
-                              <div class="product__discount__item">
-                                  <div class="product__discount__item__pic set-bg"
-                                      data-setbg="img/product/discount/pd-5.jpg">
-                                      <div class="product__discount__percent">-20%</div>
-                                      <ul class="product__item__pic__hover">
-                                          <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                          <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                          <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                      </ul>
-                                  </div>
-                                  <div class="product__discount__item__text">
-                                      <span>Dried Fruit</span>
-                                      <h5><a href="#">Raisin’n’nuts</a></h5>
-                                      <div class="product__item__price">$30.00 <span>$36.00</span></div>
-                                  </div>
-                              </div>
-                          </div>
-                          <div class="col-lg-4">
-                              <div class="product__discount__item">
-                                  <div class="product__discount__item__pic set-bg"
-                                      data-setbg="img/product/discount/pd-6.jpg">
-                                      <div class="product__discount__percent">-20%</div>
-                                      <ul class="product__item__pic__hover">
-                                          <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                          <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                          <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                      </ul>
-                                  </div>
-                                  <div class="product__discount__item__text">
-                                      <span>Dried Fruit</span>
-                                      <h5><a href="#">Raisin’n’nuts</a></h5>
-                                      <div class="product__item__price">$30.00 <span>$36.00</span></div>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-            </div> -->
-
               <div class="row">
                   <div class="col-lg-4 col-md-6 col-sm-6" *ngFor="let prd of list; index as i">
                       <div class="product__item">

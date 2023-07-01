@@ -14,7 +14,9 @@ rangeSlider.slider({
       minamount.val(ui.values[0] + 'Dn');
       maxamount.val(ui.values[1] + 'Dn');
   }
+
 });
+
 minamount.val(rangeSlider.slider("values", 0) + + 'Dn');
 maxamount.val(rangeSlider.slider("values", 1) + + 'Dn');
 

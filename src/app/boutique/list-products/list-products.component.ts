@@ -9,6 +9,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class ListProductsComponent implements OnInit {
   list!: any;
+  searchList = '';
+  selectedCategory = '';
+  selectedColor = '';
+  selectedSize = '';
+  priceMax = 1500;
+  priceMin  = 10;
+
   constructor(private boutiqueService: BoutiqueService) {}
 
   categories = [
@@ -21,9 +28,9 @@ export class ListProductsComponent implements OnInit {
     { id: 1, name: 'White' },
     { id: 2, name: 'Gray' },
     { id: 3, name: 'Red'},
-    { id: 3, name: 'Green'},
-    { id: 3, name: 'Blue'},
-    { id: 3, name: 'Black'},
+    { id: 4, name: 'Green'},
+    { id: 5, name: 'Blue'},
+    { id: 6, name: 'Black'},
   ];
 
   size = [
@@ -32,17 +39,8 @@ export class ListProductsComponent implements OnInit {
     { id: 3, name: 'Small'},
   ];
 
-  priceMax =1500
-  priceMin = 0
-
   ngOnInit(): void {
-    this.boutiqueService.fetchProducts().subscribe((result) => {
-      this.list = result;
-      console.log(this.list);
-    });
-
-    this.search(0 ,1500,"Small","Blue","campsMaterials");
-
+    this.search(this.priceMin ,this.priceMax ,this.selectedSize ,this.selectedColor ,this.selectedCategory);
   }
 
   addToCart(idProduct: number,idClient: number,qty:number) {
@@ -57,16 +55,33 @@ export class ListProductsComponent implements OnInit {
     )
   }
 
-  search(priceMin : number,priceMax:number,size:String,color:String,catg:String) {
-    this.boutiqueService.searchProducts(priceMin ,priceMax,size,color,catg).subscribe(
-      (result)=>{
-        console.log('*******************done searching')
-        console.log(result)
-      },
-      (err) => {
-        console.log("here",err);
-      }
-    )
+  search(priceMin: number, priceMax: number, size: string, color: string, catg: string) {
+
+    console.log(this.priceMin ,this.priceMax ,this.selectedSize ,this.selectedColor ,this.selectedCategory)
+    if (!priceMin && !priceMax && !size && !color && !catg) {
+      this.boutiqueService.fetchProducts().subscribe((result) => {
+        this.list = result;
+        console.log("All product listing");
+        console.log(this.list);
+      });
+    } else {
+      this.boutiqueService.searchProducts(priceMin, priceMax, size, color, catg).subscribe(
+        (result) => {
+          console.log('Search product listing');
+          this.list = result;
+          console.log(result);
+        },
+        (err) => {
+          console.log("Error:", err);
+        }
+      );
+    }
+  }
+  onSubmit(){
+    console.log(this.priceMin)
+    console.log(this.priceMax)
   }
 
+
 }
+

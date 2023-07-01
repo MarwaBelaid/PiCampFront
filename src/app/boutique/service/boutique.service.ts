@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Equipement } from '../model/Equipement';
 import { Commande } from '../model/Commande';
+import { CommandeEquipement } from '../model/CommandeEquipement';
 
 @Injectable({
   providedIn: 'root'
@@ -33,4 +34,18 @@ export class BoutiqueService {
     return this.http.get<Equipement[]>(this.productsUrl + `product/search?priceMin=${priceMin}&priceMax=${priceMax}&size=${size}&color=${color}&catg=${catg}`);
   }
 
+  getAllEquipementCommande(id:any):Observable<CommandeEquipement[]>{
+    return this.http.get<CommandeEquipement[]>(this.productsUrl + `commande/EquipementCommandebyid/${id}`)
+     }
+
+
+  getCommandeByIdUser(id:any):Observable<Commande>{
+      return this.http.get<Commande>(this.productsUrl + `commande/CommandebyidUser/${id}`)
+       }
+
+      updateCart(idCommande: any, idEquiCommande: any, qty: any) {
+        const url = `${this.productsUrl}commande/updateCart/${idCommande}/${idEquiCommande}/${qty}`;
+        const requestBody = { };
+        return this.http.put(url, requestBody);
+      }
 }
