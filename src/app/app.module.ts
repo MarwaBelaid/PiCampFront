@@ -19,7 +19,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { HomeComponent } from './home/home.component';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { MatListModule } from '@angular/material/list';
-
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 // import {NgToastModule} from 'ng-angular-popup';
 
 @NgModule({
@@ -44,8 +44,8 @@ import { MatListModule } from '@angular/material/list';
     MatInputModule,
     ReactiveFormsModule,
     MatToolbarModule,
-    MatListModule
-    // NgToastModule
+    MatListModule,
+    SweetAlert2Module
     
   ],
   providers: [],

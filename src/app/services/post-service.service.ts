@@ -25,4 +25,10 @@ export class PostServiceService {
 
     
   }
+  addFeedback(id:any,feedback:any){
+
+    return this.http.put(`http://127.0.0.1:8082/CampProject/posts/feedback/${id}`,feedback);
+
+    
+  }
 }

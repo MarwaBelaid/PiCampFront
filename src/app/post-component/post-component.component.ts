@@ -6,6 +6,8 @@ import { PostServiceService } from '../services/post-service.service';
 import { CommentServiceService } from '../services/comment-service.service';
 import { formatDate } from '@angular/common';
 
+
+
 @Component({
   selector: 'app-post-component',
   templateUrl: './post-component.component.html',
@@ -16,17 +18,21 @@ export class PostComponentComponent implements OnInit {
   likes: any
   commentVisible: boolean = false;
   commentResponse: boolean = false;
+  feedback1: boolean = false;
+  feedback2: boolean = false;
+  feedback3: boolean = false;
   idUser: any
   isFavorite: boolean = false;
   comment: any;
   commentData: any
   comments: any
-  user:any
+  user: any
 
   constructor(private dialog: MatDialog, private postService: PostServiceService, private commentService: CommentServiceService) { }
 
   ngOnInit(): void {
     this.readAllPosts();
+
 
 
   }
@@ -41,13 +47,15 @@ export class PostComponentComponent implements OnInit {
     if (item.liked == false) {
       item.nbLike += 1;
       item.liked = true
-    }else{
+    } else {
       item.nbLike -= 1;
       item.liked = false
-    }    
+    }
     this.postService.updateLike(item.id, item.liked, item.nbLike).subscribe(
       result => {
         console.log(result);
+     
+
       },
       error => {
         console.log(error);
@@ -57,10 +65,10 @@ export class PostComponentComponent implements OnInit {
   likeComment(comment: any) {
     if (comment.liked == false) {
       comment.liked = true
-    }else{
+    } else {
       comment.liked = false
     }
-      
+
     this.commentService.updateLike(comment.id_commentaire, comment.liked).subscribe(
       result => {
         console.log(result);
@@ -77,13 +85,13 @@ export class PostComponentComponent implements OnInit {
     this.commentService.addComment(this.comment, this.idUser = 1, item.id).subscribe(
       result => {
         const formattedDate = formatDate(new Date(), 'yyyy-MM-dd ', 'en-US');
-       
+
         // Mettre à jour la liste des commentaires avec le nouveau commentaire
         item.commentaires.push({
-           contenu_commentaire: this.comment,
-           date_creation:formattedDate
-     
-         });
+          contenu_commentaire: this.comment,
+          date_creation: formattedDate
+
+        });
 
         // Réinitialiser la variable comment pour effacer le contenu du textarea
         this.comment = '';
@@ -108,7 +116,7 @@ export class PostComponentComponent implements OnInit {
       data => {
         this.posts = data;
         this.comments = this.posts.commentaires;
-        console.log('here',this.posts);
+        console.log('here', this.posts);
       },
       error => {
         console.log(error);
@@ -116,7 +124,21 @@ export class PostComponentComponent implements OnInit {
     );
   }
 
+  updateFeedback(item: any, rating: number) {
 
+    this.postService.addFeedback(item.id, rating).subscribe(
+      result => {
+        console.log(result);
+        setTimeout(function () { window.location.reload(); }, 3000);      },  
+      error => {
+        console.log(error);
+  
+      }
+    );
+    
+  }
+ 
+  
 
   dataURLtoFile(dataURL: string, filename: string): File {
     const arr = dataURL.split(',');
