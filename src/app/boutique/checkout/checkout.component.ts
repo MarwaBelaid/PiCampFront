@@ -19,8 +19,8 @@ export class CheckoutComponent implements OnInit {
   phone!: any;
   adress!: any;
   email!: any;
-  typeCommande!: any;
-  typePaiement!: any;
+  typeCommande='';
+  typePaiement='';
   dureeLocation=0;
   numCarte!: any;
   pin!: any;

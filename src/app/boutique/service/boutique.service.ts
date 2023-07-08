@@ -51,11 +51,8 @@ export class BoutiqueService {
       }
 
       checkout(idCommande: any, typeCommande: any, typePaiement: any,daysLocation:number) {
-        const url = `${this.productsUrl}commande/updateCommande/${idCommande}`;
+        const url = `${this.productsUrl}commande/updateCommande/${idCommande}?typeCommande=${typeCommande}&typePaiement=${typePaiement}&daysLocation=${daysLocation}`;
         const requestBody = {
-          "typeCommande":typeCommande,
-          "typePaiement":typePaiement,
-          "daysLocation":daysLocation,
         };
         return this.http.put(url, requestBody);
       }

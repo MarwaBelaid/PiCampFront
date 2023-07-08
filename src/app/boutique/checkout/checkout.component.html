@@ -118,7 +118,7 @@
               <div class="checkout__order__total">
                 Total <span>{{commandeTotal }} Dn</span>
               </div>
-              <button type="submit" value="save" (click)="onCheckout(f.value)" class="site-btn">PLACE ORDER</button>
+              <button type="submit" [disabled]="typePaiement === '' && typeCommande === ''" value="save" (click)="onCheckout(f.value)" class="site-btn">PLACE ORDER</button>
             </div>
           </div>
         </div>
