@@ -17,26 +17,17 @@
                       </ul>
                   </div>
                   <div class="sidebar__item">
-                      <h4>Price</h4>
-                      <div class="price-range-wrap">
-                          <div class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"
-                              data-min="10" data-max="540">
-                              <div class="ui-slider-range ui-corner-all ui-widget-header"></div>
-                              <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
-                              <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
-                          </div>
-                          <div class="range-slider">
-                              <div class="price-input">
+                    <h4>Prices</h4>
+                    <ul *ngFor="let price of prices; index as i">
 
-                                <form (submit)="onSubmit()">
-                                  <input type="text" name="priceMin" [(ngModel)]="priceMin" id="minamount">
-                                  <input type="text" name="priceMax" [(ngModel)]="priceMax" id="maxamount">
-                                  <button type="submit">submit</button>
-                               </form>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
+                      <div class="sidebar__item__size">
+                        <label for={{price.name}}>
+                          {{price.name}}
+                            <input type="radio" (click)="priceMin=price.priceMin;priceMax=price.priceMax; search(price.priceMin, price.priceMax, selectedSize, selectedColor, selectedCategory)" [id]="price.name">
+                        </label>
+                    </div>
+                    </ul>
+                </div>
                   <div class="sidebar__item sidebar__item__color--option">
                       <h4>Colors</h4>
                       <ul *ngFor="let colored of color; index as i">

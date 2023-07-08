@@ -23,6 +23,12 @@ export class ListProductsComponent implements OnInit {
     { id: 2, name: 'clothes' },
     { id: 3, name: 'campsMaterials'},
   ];
+  prices = [
+    { id: 1, name: '10-50',priceMin:10,priceMax:50 },
+    { id: 2, name: '50-100',priceMin:50,priceMax:100 },
+    { id: 3, name: '100-1000',priceMin:100,priceMax:1000},
+    { id: 3, name: '1000-1500',priceMin:1000,priceMax:2000},
+  ];
 
   color = [
     { id: 1, name: 'White' },

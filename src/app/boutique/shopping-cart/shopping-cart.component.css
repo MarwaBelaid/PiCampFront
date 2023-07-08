@@ -3437,3 +3437,8 @@ ol {
   color: white;
 }
 
+.disabled-link {
+  pointer-events: none;
+  opacity: 0.5;
+  color: #636363;
+}

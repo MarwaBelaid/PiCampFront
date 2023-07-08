@@ -58,8 +58,8 @@
                   <ul>
                       <li>Total <span>{{commande.montant_total }}</span></li>
                   </ul>
-                  <a href="#" class="primary-btn">PROCEED TO CHECKOUT</a>
-              </div>
+                  <a [routerLink]="list.length > 0 ? '/checkout' : ''" class="primary-btn" [ngClass]="{ 'disabled-link': list.length === 0 }">PROCEED TO CHECKOUT</a>
+                </div>
           </div>
       </div>
     </form>

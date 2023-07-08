@@ -1,29 +1,28 @@
+<app-nav-bar></app-nav-bar>
 <section class="checkout spad">
   <div class="container">
-    <div class="row">
-      <div class="col-lg-12">
-        <h6>
-          <span class="icon_tag_alt"></span> Have a coupon?
-          <a href="#">Click here</a> to enter your code
-        </h6>
-      </div>
-    </div>
     <div class="checkout__form">
       <h4>Billing Details</h4>
-      <form action="#">
+      <form  #f="ngForm">
         <div class="row">
           <div class="col-lg-8 col-md-6">
             <div class="row">
               <div class="col-lg-6">
                 <div class="checkout__input">
                   <p>Fist Name<span>*</span></p>
-                  <input type="text" />
+                  <input type="text" [(ngModel)]="firstName" name="firstName" #idt="ngModel" required/>
+                  <div *ngIf="idt.invalid">
+                    <div *ngIf="idt.errors?.['required']" class="error-message">Please fill in the First Name input.</div>
+                  </div>
                 </div>
               </div>
               <div class="col-lg-6">
                 <div class="checkout__input">
                   <p>Last Name<span>*</span></p>
-                  <input type="text" />
+                  <input type="text" [(ngModel)]="lastName" name="lastName" #lastname="ngModel" required/>
+                  <div *ngIf="lastname.invalid">
+                    <div *ngIf="lastname.errors?.['required']" class="error-message">Please fill in the Last Name input.</div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -31,41 +30,80 @@
               <div class="col-lg-6">
                 <div class="checkout__input">
                   <p>Phone<span>*</span></p>
-                  <input type="text" />
+                  <input type="number" [(ngModel)]="phone" name="phone" #phones="ngModel" required />
+                  <div *ngIf="phones.invalid">
+                    <div *ngIf="phones.errors?.['required']" class="error-message">Please fill in the Phone input.</div>
+                  </div>
                 </div>
               </div>
               <div class="col-lg-6">
                 <div class="checkout__input">
                   <p>Email<span>*</span></p>
-                  <input type="text" />
+                  <input type="text" [(ngModel)]="email" name="email" #emails="ngModel" required/>
+                  <div *ngIf="emails.invalid">
+                    <div *ngIf="emails.errors?.['required']" class="error-message">Please fill in the Email input.</div>
+                  </div>
                 </div>
               </div>
             </div>
             <div class="checkout__input">
-              <p>Country<span>*</span></p>
-              <input type="text" />
-            </div>
-            <div class="checkout__input">
               <p>Address<span>*</span></p>
               <input
-                type="text"
+                type="text"  [(ngModel)]="adress" name="adress" #adresss="ngModel" required
                 placeholder="Street Address, Apartment, suite, unite"
                 class="checkout__input__add"
               />
+              <div *ngIf="adresss.invalid">
+                <div *ngIf="adresss.errors?.['required']" class="error-message">Please fill in the Adress input.</div>
+              </div>
             </div>
             <div class="checkout__input">
               <p>Type Commande<span>*</span></p>
-              <select class="custom-select custom-select-lg mb-3">
+              <select class="custom-select custom-select-lg mb-3" required [(ngModel)]="typeCommande" name="typeCommande">
+                <option value="" disabled selected>Select an option</option>
                 <option value="Location">Location</option>
                 <option value="Achat">Achat</option>
               </select>
+              <div *ngIf="!typeCommande" class="error-message">Please select a value.</div>
+
+            </div>
+            <div *ngIf="typeCommande === 'Location'">
+              <div class="checkout__input">
+                <p>Duree Location<span>*</span></p>
+                <input type="text" [(ngModel)]="dureeLocation" name="dureeLocation" #dureeLocationn="ngModel" required/>
+                <div *ngIf="dureeLocationn.invalid">
+                  <div *ngIf="dureeLocationn.errors?.['required']" class="error-message">Please fill in the Location duration input.</div>
+                </div>
+              </div>
+            </div>
+            <div *ngIf="typeCommande !== 'Location'">
+                <input type="hidden" value="0" [(ngModel)]="dureeLocation" name="dureeLocation" />
             </div>
             <div class="checkout__input">
               <p>Type Paiement<span>*</span></p>
-              <select class="custom-select custom-select-lg mb-3">
-                <option value="Location">Espèce</option>
-                <option value="Achat">CarteBancaire</option>
+              <select class="custom-select custom-select-lg mb-3" [(ngModel)]="typePaiement" name="typePaiement">
+                <option value="" disabled selected>Select an option</option>
+                <option value="Espèce">Espèce</option>
+                <option value="CarteBancaire">CarteBancaire</option>
               </select>
+              <div *ngIf="!typePaiement" class="error-message">Please select a value.</div>
+
+            </div>
+          </div>
+          <div *ngIf="typePaiement === 'CarteBancaire'">
+            <div class="checkout__input">
+              <p>Numero carte Banquaire<span>*</span></p>
+              <input type="text" [(ngModel)]="numCarte" name="numCarte" #numCartee="ngModel" required/>
+              <div *ngIf="numCartee.invalid">
+                <div *ngIf="numCartee.errors?.['required']" class="error-message">Please fill in the Card number input.</div>
+              </div>
+            </div>
+            <div class="checkout__input">
+              <p>Code pin<span>*</span></p>
+              <input type="text" [(ngModel)]="pin" name="pin" #pinn="ngModel" required />
+              <div *ngIf="pinn.invalid">
+                <div *ngIf="pinn.errors?.['required']" class="error-message">Please fill in the Pin number input.</div>
+              </div>
             </div>
           </div>
           <div class="col-lg-4 col-md-6">
@@ -74,18 +112,13 @@
               <div class="checkout__order__products">
                 Products <span>Total</span>
               </div>
-              <ul>
-                <li>Vegetable’s Package <span>$75.99</span></li>
-                <li>Fresh Vegetable <span>$151.99</span></li>
-                <li>Organic Bananas <span>$53.99</span></li>
+              <ul *ngFor="let eqpCom of list; index as i">
+                <li>{{ eqpCom.equipement.nom }} <span> {{eqpCom.quantite_produit * eqpCom.equipement.prix }} Dn</span></li>
               </ul>
-              <div class="checkout__order__subtotal">
-                Subtotal <span>$750.99</span>
-              </div>
               <div class="checkout__order__total">
-                Total <span>$750.99</span>
+                Total <span>{{commandeTotal }} Dn</span>
               </div>
-              <button type="submit" class="site-btn">PLACE ORDER</button>
+              <button type="submit" value="save" (click)="onCheckout(f.value)" class="site-btn">PLACE ORDER</button>
             </div>
           </div>
         </div>

@@ -3437,3 +3437,6 @@ ol {
   color: white;
 }
 
+.error-message {
+  color: red;
+}

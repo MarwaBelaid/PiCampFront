@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Equipement } from '../model/Equipement';
 import { Commande } from '../model/Commande';
 import { CommandeEquipement } from '../model/CommandeEquipement';
+import { User } from '../model/User';
 
 @Injectable({
   providedIn: 'root'
@@ -48,4 +49,20 @@ export class BoutiqueService {
         const requestBody = { };
         return this.http.put(url, requestBody);
       }
+
+      checkout(idCommande: any, typeCommande: any, typePaiement: any,daysLocation:number) {
+        const url = `${this.productsUrl}commande/updateCommande/${idCommande}`;
+        const requestBody = {
+          "typeCommande":typeCommande,
+          "typePaiement":typePaiement,
+          "daysLocation":daysLocation,
+        };
+        return this.http.put(url, requestBody);
+      }
+
+
+  getUser(id:any):Observable<User>{
+    return this.http.get<User>(this.productsUrl + `commande/getUser/${id}`)
+     }
+
 }
