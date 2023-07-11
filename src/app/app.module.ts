@@ -20,17 +20,32 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ListProductsComponent } from './boutique/list-products/list-products.component';
 import { DetailProductComponent } from './boutique/detail-product/detail-product.component';
 import { ShoppingCartComponent } from './boutique/shopping-cart/shopping-cart.component';
+import { SecurityinterfaceComponent } from './securityinterface/securityinterface.component';
+import { RegisterComponent } from './register/register.component';
+import { ProfileComponent } from './profile/profile.component';
+import { LoginComponent } from './login/login.component';
+import { BoardAdminComponent } from './board-admin/board-admin.component';
+import { BoardModeratorComponent } from './board-moderator/board-moderator.component';
+import { BoardUserComponent } from './board-user/board-user.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
     PostComponentComponent,
     AddPostComponent,
     NavBarComponent,
     HomeComponent,
     ListProductsComponent,
     DetailProductComponent,
-    ShoppingCartComponent
+    ShoppingCartComponent,
+    SecurityinterfaceComponent,
+    DetailProductComponent,
+    AppComponent,
+    LoginComponent,
+    RegisterComponent,
+    ProfileComponent,
+    BoardAdminComponent,
+    BoardModeratorComponent,
+    BoardUserComponent
   ],
   imports: [
     ScrollingModule,
@@ -49,6 +64,10 @@ import { ShoppingCartComponent } from './boutique/shopping-cart/shopping-cart.co
     // NgToastModule
     HttpClientModule,
     FormsModule
+
+
+
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
