@@ -11,6 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class DetailProductComponent implements OnInit {
 
   id!: any;
+  idClient = 3;
   qty = 1;
   equipement = new Equipement();
   ngOnInit(): void {

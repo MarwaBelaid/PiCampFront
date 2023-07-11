@@ -31,7 +31,7 @@
                           </div>
                       </div>
                   </div>
-                  <button type="submit" class="primary-btn" [disabled]="equipement.status !== 'disponible'" [ngClass]="{'addtocart': equipement.status !== 'disponible'}" (click)="addToCart(equipement.id_equipement, 4, qty)">ADD TO CART</button>
+                  <button type="submit" class="primary-btn" [disabled]="equipement.status !== 'disponible'" [ngClass]="{'addtocart': equipement.status !== 'disponible'}" (click)="addToCart(equipement.id_equipement, idClient, qty)">ADD TO CART</button>
                   <ul>
                       <li><b>Availability</b>
                         <span *ngIf="equipement.status=='disponible'">In Stock</span>
