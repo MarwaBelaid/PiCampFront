@@ -1,0 +1,21 @@
+<p>Choisir un centre de camping</p>
+
+
+  <label for="type">Type d'activité</label>
+    <select [(ngModel)]="selectedOption" >
+      <option  *ngFor="let option of centre" [value]="option.id_centre">{{ option.nom_centre }}</option>
+    </select>
+
+<br>
+<br>
+
+
+<br>
+
+<br>
+<br>
+
+
+<button mat-raised-button color="primary" (click)="onAffecter(selectedOption)">Affecter</button>
+<button mat-raised-button color="warn" (click)="onCancel()">Annuler</button>
+

@@ -1,0 +1,41 @@
+<app-nav-bar></app-nav-bar>
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  <div class="col" *ngFor="let Act of Activities">
+    <div class="card">
+        <div class="bg-image hover-overlay" mdbRipple rippleColor="light">
+       <!-- <img  [src]=" Act.photosFile[0].url " alt="Example Image">-->
+       <ng-container *ngIf="Act.photosFile && Act.photosFile.size > 0">
+        <img [src]="Act.photosFile.values().next().value.url" alt="Example Image">
+      </ng-container>
+       
+        <a href="#!">
+          <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+        </a>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">{{ Act.nom_activity }}</h5>
+        <p class="card-text">{{ Act.description }}</p>
+        <div class="center-buttons">
+        <button mat-icon-button extended class="custom-button" (click)="deleteAct(Act.id_activity)">
+          <mat-icon>delete</mat-icon>
+        </button>
+        <button mat-icon-button extended class="custom-button" (click)="editAct(Act.id_activity)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button extended class="custom-button" (click)="ShowImage(Act)">
+          <mat-icon>image</mat-icon>
+        </button>
+        <button mat-icon-button extended class="custom-button" (click)="showActDetails(Act.id_activity)" >
+          <mat-icon>details</mat-icon>
+        </button>
+        <br>
+        
+        </div>
+        <button type="submit" class="custom-button" (click)="openDialog(Act.id_activity)"  >
+          Affecter à un camp
+         </button>
+ 
+      </div>
+    </div>
+  </div>
+</div>

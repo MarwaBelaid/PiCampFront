@@ -1,0 +1,158 @@
+<app-nav-bar></app-nav-bar>
+<form (ngSubmit)="submitActivityForm()" class="form-container" enctype="multipart/form-data">
+    <div class="row"> 
+      <div class="column">
+        <fieldset>
+          <legend>Informations générales</legend>
+          <hr>
+          <!-- Contenu de la première colonne -->
+          <div>
+            <label for="nom_activity">Nom de l'activité</label>
+            <input type="text" id="nom_activity" [(ngModel)]="activity.nom_activity" name="nom_activity" required>
+          </div>
+          <div>
+            <label for="description">Description</label>
+            <textarea id="description" [(ngModel)]="activity.description" name="description" required></textarea>
+          </div>
+          <div>
+            <label for="prix">Prix</label>
+            <input type="number" id="prix" [(ngModel)]="activity.prix" name="prix" required>
+          </div>
+          <div>
+            <label for="capacite_min">Capacité minimale</label>
+            <input type="number" id="capacite_min" [(ngModel)]="activity.capacite_min" name="capacite_min" required>
+          </div>
+          <div>
+              <label for="capacite_max">Capacité maximale</label>
+              <input type="number" id="capacite_max" [(ngModel)]="activity.capacite_max" name="capacite_max" required>
+            </div>
+            <div>
+            <label for="type">Type d'activité</label>
+            <select [(ngModel)]="activity.type" name="type">
+              <option *ngFor="let option of options" [value]="option">{{ option }}</option>
+            </select>
+          </div>
+        </fieldset>
+      </div>
+      
+    
+      <div class="column">
+        
+        <div  class="fieldset-container" *ngIf="isNewActivity == true">
+        <fieldset >
+            <legend>Informations supplémentaires</legend>
+          <hr>
+          <!-- Contenu de la deuxième colonne -->
+          <div class="field-group">
+            <label for="heure_debut">Heure de début</label>
+            <input type="time" id="heure_debut" [(ngModel)]="detailsActivity.heure_debut" name="heure_debut" required>
+          </div>
+          <div class="field-group">
+            <label for="heure_fin">Heure de fin</label>
+            <input type="time" id="heure_fin" [(ngModel)]="detailsActivity.heure_fin" name="heure_fin" required>
+          </div>
+          <div class="field-group">
+            <label for="date">Date</label>
+            <input type="date" id="date" [(ngModel)]="detailsActivity.date" name="date" required>
+          </div>
+          <br>
+         <!-- <div>
+            <label for="nbPlace">Nombre de places</label>
+            <input type="number" id="nbPlace" [(ngModel)]="detailsActivity.nbPlace" name="nbPlace" required>
+          </div>-->
+
+
+
+          <button type="button" (click)="addDetailActivity()">Add Detail</button>
+
+          
+        </fieldset>
+        </div>
+        <div *ngIf="isNewActivity == false"> 
+        <!--  <div *ngFor="let detail of detailsActivityList.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)">-->
+          <div *ngFor="let detail of convertSetToArray(detailsActivityListUpdate).slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)">
+            <fieldset>
+              <legend>Informations supplémentaires</legend>
+          
+              <div class="field-group">
+                <div class="field-group">
+                  <label for="heure_debut">Heure de début</label>
+                  <input type="time" id="heure_debut" [ngModel]="formatTime(detail?.heure_debut)" (ngModelChange)="updateHeureDebut($event.target?.value ?? '', detail.idDA)" name="heure_debut" required>
+                </div>
+                
+                <div class="field-group">
+                  <label for="heure_fin">Heure de fin</label>
+                  <input type="time" id="heure_fin" [ngModel]="formatTime(detail?.heure_fin)" (ngModelChange)="detail.heure_fin = parseTime($event.target.value)" name="heure_fin" required>
+                </div>
+                
+                <div class="field-group">
+                  <label for="date">Date</label>
+                  <input type="date" id="date" [ngModel]="detail?.date | date:'yyyy-MM-dd'" (ngModelChange)="detail.date = $event" name="date" required>
+                </div>
+                <br>
+          
+                <div>
+                  <label for="nbPlace">Nombre de places</label>
+                  <input type="number" id="nbPlace" [(ngModel)]="detail['nbPlace']" name="nbPlace" required>
+                </div>
+              </div>
+
+            </fieldset>
+          <button type="button" (click)="UpdateDetailActivity(detail)">Update Detail</button>
+
+          <div>
+            <button (click)="currentPage = currentPage - 1" [disabled]="currentPage === 1">Précédent</button>
+            <button (click)="currentPage = currentPage + 1" [disabled]="currentPage === getTotalPages()" *ngIf="getTotalPages()>1">Suivant</button>
+          </div>
+       </div>
+
+      </div>
+    </div>
+      
+    
+</div>
+
+<div class="row justify-content-center">
+    
+    <div class="input-field" >
+        <label>Photos</label>
+
+                <div class="dropezone" appDrag (files)="fileDropped($event)" >
+                   <div class="text-wrapper"> 
+                     <div class="centred">
+                     
+                      Drag and drop photos of camp or
+                    <a (click)="selectFile.click()" class ="browse-button" >browse</a>
+                     a file
+  
+                     </div>
+                    </div>
+                 </div>
+  
+                 <input multiple type="file" style="display: none;"  value="select" #selectFile (change)="onFileSelected($event)">
+                        
+                       
+            </div>
+   
+            <div class="mt-5">
+                <div class="row">
+                  <mat-grid-list cols="5" rowHeight="1:1" gutterSize="3px">
+                    <mat-grid-tile *ngFor="let file of activity.photosFile; let i = index;">
+                      <div style="position: relative">
+                        <span class="btn-removed" (click)="removeImages(i)">x</span>
+                        <img [src]="file.url" alt="Photo" width="100%" height="100%">
+                      </div>
+                    </mat-grid-tile>
+                  </mat-grid-list>
+                </div>
+              </div>
+        </div>
+
+
+        
+        
+        <button type="submit" style="margin-left: 85% ;" *ngIf="isNewActivity">Ajouter Activitée </button>
+        <button type="submit" style="margin-left: 85% ;" *ngIf="!isNewActivity">Modifier Activitée </button>
+   
+  </form>
+  

@@ -1,0 +1,118 @@
+<app-nav-bar></app-nav-bar>
+<form (ngSubmit)="submitActivityForm()" class="form-container" enctype="multipart/form-data">
+    <div class="row"> 
+      <div class="column">
+        <fieldset>
+          <legend>Informations du reservation</legend>
+          <hr>
+          <!-- Contenu de la première colonne -->
+        
+          <div>
+            <label for="description">Nombre du personne</label>
+            <textarea id="nbr_personne" [(ngModel)]="reservation.nbr_personne" name="nbr_personne" required></textarea>
+          </div>
+         
+
+          
+        </fieldset>
+      </div>
+      
+    
+      <div class="column">
+        
+        <div  class="fieldset-container" *ngIf="isNewRes == true">
+        <fieldset >
+            <legend>Informations supplémentaires</legend>
+          <hr>
+          <!-- Contenu de la deuxième colonne -->
+          
+          <br>
+<h1>
+    test
+</h1>
+       <!-- <table mat-table class="mat-elvation-z8">
+            <ng-container matColumnDef="position">
+                            </ng-container>
+          
+            <tr mat-row *ngFor="let element of Activities">
+              <td mat-cell>{{ element.age_min }}</td>
+              
+            </tr>
+          </table>
+          <br>-->
+          
+         <!-- <div>
+            <label for="nbPlace">Nombre de places</label>
+            <input type="number" id="nbPlace" [(ngModel)]="detailsActivity.nbPlace" name="nbPlace" required>
+          </div>-->
+
+
+          <table>
+                                  <thead>
+                                      <tr>
+                                          <th class="shoping__product">Products</th>
+                                          <th>detail</th>
+                                          <th>Action</th>
+                                          <th></th>
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                                      <tr *ngFor="let ele of Activities; index as i">
+                                          <td class="shoping__cart__item">
+                                              <h5>{{ ele.age_min}}</h5>
+                                      <tr *ngFor="let act of ele.detailsActivity
+            ; index as i">
+            <td>
+                <h3>
+                   {{act.idDA}} 
+
+                </h3>
+            </td>
+
+                                                                                   </tr>
+
+                                          </td>
+
+                                      </tr>
+            
+                                  </tbody>
+                              </table>
+
+          
+        </fieldset>
+        </div>
+       <!-- <div *ngIf="isNewRes == false"> -->
+        <!--  <div *ngFor="let detail of detailsActivityList.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)">-->
+        <!--  <div *ngFor="let detail of convertSetToArray(detailsActivityListUpdate).slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)">
+            <fieldset>
+              <legend>Informations du reservation</legend>
+                       
+                <div class="field-group">
+                  <label for="date">Date</label>
+                  <input type="date" id="date" [ngModel]="detail?.date | date:'yyyy-MM-dd'" (ngModelChange)="detail.date = $event" name="date" required>
+                </div>
+                <br>
+          
+            
+            </fieldset>
+          <button type="button" (click)="UpdateReservation(detail)">Update Detail</button>
+--
+        
+       </div>
+
+      </div>
+    </div>
+-->
+
+    
+</div>
+        </div>
+
+
+        
+        
+        <button type="submit" style="margin-left: 85% ;" *ngIf="isNewRes">Ajouter Reservation </button>
+        <button type="submit" style="margin-left: 85% ;" *ngIf="!isNewRes">Modifier Reservation </button>
+   
+  </form>
+  

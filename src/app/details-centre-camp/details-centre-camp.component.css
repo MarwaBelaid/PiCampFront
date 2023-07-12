@@ -1,0 +1,35 @@
+.centre-information{
+    font-size: medium;
+    margin-top: 8%;
+    margin-left: 15%;
+}
+
+app-nav-bar {
+    display: block;
+    background-color: #2e2e2e;
+    height: 80px;
+    padding: 5px;
+    box-sizing: border-box;
+    /* Autres styles CSS */
+  }
+
+.image-container{
+    height: 400px;
+    position: relative;
+}
+
+.centre-zoom-image{
+
+    max-width: 300%;
+    max-height: 300%;
+    width: 80%;
+    height: 80%;
+    position: absolute;
+    top:0 ; 
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+
+
+}

@@ -1,0 +1,36 @@
+<app-nav-bar></app-nav-bar>
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  <div class="col" *ngFor="let centreCamp of CenteCamps">
+    <div class="card">
+        <div class="bg-image hover-overlay" mdbRipple rippleColor="light">
+        <!--<img  [src]=" centreCamp.photos_centre.url " alt="Example Image">-->
+        <ng-container *ngIf="centreCamp.photos_centre && centreCamp.photos_centre.size > 0">
+          <img [src]="centreCamp.photos_centre.values().next().value.url" alt="Example Image">
+        </ng-container>
+       
+        <a href="#!">
+          <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+        </a>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">{{ centreCamp.nom_centre }}</h5>
+        <p class="card-text">{{ centreCamp.adresse_centre }}</p>
+        <div class="center-buttons">
+        <button mat-icon-button extended class="custom-button" (click)="delteCntre(centreCamp.id_centre)">
+          <mat-icon>delete</mat-icon>
+        </button>
+        <button mat-icon-button extended class="custom-button" (click)="editCntre(centreCamp.id_centre)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button extended class="custom-button" (click)="ShowImage(centreCamp)">
+          <mat-icon>image</mat-icon>
+        </button>
+        <button mat-icon-button extended class="custom-button" (click)="showCentreDetails(centreCamp.id_centre)" >
+          <mat-icon>details</mat-icon>
+        </button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

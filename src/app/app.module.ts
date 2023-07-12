@@ -20,6 +20,21 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ListProductsComponent } from './boutique/list-products/list-products.component';
 import { DetailProductComponent } from './boutique/detail-product/detail-product.component';
 import { ShoppingCartComponent } from './boutique/shopping-cart/shopping-cart.component';
+import { AddCentreCampComponent } from './add-centre-camp/add-centre-camp.component';
+import { GetAllCentreCampComponent } from './get-all-centre-camp/get-all-centre-camp.component';
+import { MatGridListModule} from '@angular/material/grid-list';
+import { DragDirective } from './drag.directive';
+import { DetailsCentreCampComponent } from './details-centre-camp/details-centre-camp.component';
+import { UpdateCentreCampComponent } from './update-centre-camp/update-centre-camp.component';
+import { ShowImageCentreCampComponent } from './show-image-centre-camp/show-image-centre-camp.component';
+import { MatTableModule } from '@angular/material/table';
+import { AddActivityComponent } from './add-activity/add-activity.component';
+import { ShowActivitiesComponent } from './show-activities/show-activities.component';
+import { MatCardModule } from '@angular/material/card';
+import { DetailsActivityComponent } from './details-activity/details-activity.component';
+import { AffecterActivityComponent } from './affecter-activity/affecter-activity.component';
+import { ReservationComponent } from './reservation/reservation.component';
+
 
 @NgModule({
   declarations: [
@@ -30,7 +45,18 @@ import { ShoppingCartComponent } from './boutique/shopping-cart/shopping-cart.co
     HomeComponent,
     ListProductsComponent,
     DetailProductComponent,
-    ShoppingCartComponent
+    ShoppingCartComponent,
+    AddCentreCampComponent,
+    GetAllCentreCampComponent,
+    DragDirective,
+    DetailsCentreCampComponent,
+    UpdateCentreCampComponent,
+    ShowImageCentreCampComponent,
+    AddActivityComponent,
+    ShowActivitiesComponent,
+    DetailsActivityComponent,
+    AffecterActivityComponent,
+    ReservationComponent
   ],
   imports: [
     ScrollingModule,
@@ -48,7 +74,13 @@ import { ShoppingCartComponent } from './boutique/shopping-cart/shopping-cart.co
     MatToolbarModule,
     // NgToastModule
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MatGridListModule,
+    MatTableModule ,
+     
+    
+
+
   ],
   providers: [],
   bootstrap: [AppComponent]

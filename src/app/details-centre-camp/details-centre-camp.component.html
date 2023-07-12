@@ -1,0 +1,82 @@
+<app-nav-bar></app-nav-bar>
+<div class="container mt-5">
+    <div class="row">
+
+        <div class="col-6">
+
+            <div class="card image-container p-3">
+                <!--<img  [src]=" centreCamp.photos_centre[selectedCenterIndex].url " alt="Example Image"  class="centre-zoom-image">-->
+                <ng-container *ngIf="centreCamp.photos_centre && centreCamp.photos_centre.size > 0">
+                    <img [src]="centreCamp.photos_centre.values().next().value.url" alt="Example Image">
+                  </ng-container>
+
+            </div>
+           <div class="mt-2">
+            <mat-grid-list cols="3" gutterSize="9" rowHeight="1.2:1" style="margin-top: 5%;"  >
+
+                <mat-grid-tile *ngFor = "let file of centreCamp.photos_centre ; let i = index ;" (click)="changeIndex(i)" style="border: 1px solid lightgray; cursor: pointer;">
+                    <img  [src]="file.url" alt="Example Image" height="125px" width="200px">
+
+                </mat-grid-tile>
+            </mat-grid-list>
+
+        </div>
+
+        </div>
+        <div class="col-6">
+            <div class="centre-information">
+             <div class="mt-3">
+                <h2>{{centreCamp.nom_centre}}</h2>
+             </div>
+             <div class="mt-3">
+            <b> adresse du centre :</b>
+                <br>
+                {{centreCamp.adresse_centre}}
+             </div>
+             <div class="mt-3">
+            <b>Téléphone du centre :</b>
+                <br>
+                {{centreCamp.tel_centre}}
+             </div>
+
+             <div class="mt-3">
+            <b>Email du centre :</b>
+                 <br>
+                 {{centreCamp.email_centre}}
+              </div>
+              <div class="mt-3">
+                <b>tarif nuitee du centre :</b>
+                 <br>
+                 {{centreCamp.tarif_nuitee}}
+              </div>
+
+             
+            </div>
+            <div class="mt-5 text-center">
+            <button mat-raised-button style=" width: 200px;">Delete</button>
+            <button mat-raised-button style=" width: 200px;">Update</button>
+        </div>
+
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <h2>Liste des activitées</h2>
+
+        <br>
+
+        <table mat-table class="mat-elvation-z8">
+            <ng-container matColumnDef="position">
+              <th mat-header-cell *matHeaderCellDef> Id</th>
+              <td mat-cell *matCellDef="let element">{{ element.id_centre }}</td>
+            </ng-container>
+          
+            <tr mat-row *ngFor="let element of centreCamp.photos_centre">
+              <td mat-cell>{{ element }}</td>
+            </tr>
+          </table>
+    </div>
+
+</div>
