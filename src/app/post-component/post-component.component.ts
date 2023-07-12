@@ -24,10 +24,13 @@ export class PostComponentComponent implements OnInit {
   idUser: any
   isFavorite: boolean = false;
   comment: any;
+  responseComment: any;
   commentData: any
   comments: any
   user: any
-
+  idCommentResponse: any
+  responseTab: any[] = [];
+  
   constructor(private dialog: MatDialog, private postService: PostServiceService, private commentService: CommentServiceService) { }
 
   ngOnInit(): void {
@@ -40,6 +43,7 @@ export class PostComponentComponent implements OnInit {
     item.commentVisible = !item.commentVisible;
   }
   toggleCommentResponseVisibility(comment: any) {
+    this.idCommentResponse = comment.id_commentaire 
     comment.commentResponse = !comment.commentResponse;
   }
 
@@ -54,7 +58,7 @@ export class PostComponentComponent implements OnInit {
     this.postService.updateLike(item.id, item.liked, item.nbLike).subscribe(
       result => {
         console.log(result);
-     
+
 
       },
       error => {
@@ -102,6 +106,27 @@ export class PostComponentComponent implements OnInit {
 
     )
   }
+  addCommentResponse(item: any) {
+    this.commentService.addResponse(this.responseComment, this.idUser = 1, item.id,this.idCommentResponse).subscribe(
+      result => {
+        const formattedDate = formatDate(new Date(), 'yyyy-MM-dd ', 'en-US');
+  
+        // Mettre à jour la liste des commentaires avec le nouveau commentaire
+        this.responseTab.push({
+          contentCommentaire: this.responseComment,
+          date: formattedDate
+
+        });
+        console.log('tab',this.responseTab);
+        // Réinitialiser la variable comment pour effacer le contenu du textarea
+        this.responseComment = '';
+      },
+      error => {
+        console.log(error);
+      }
+
+    )
+  }
 
   addPost() {
     this.dialog.open(AddPostComponent, {
@@ -125,20 +150,22 @@ export class PostComponentComponent implements OnInit {
   }
 
   updateFeedback(item: any, rating: number) {
-
     this.postService.addFeedback(item.id, rating).subscribe(
       result => {
-        console.log(result);
-        setTimeout(function () { window.location.reload(); }, 3000);      },  
+        console.log("done");
+        setTimeout(function () { window.location.reload(); }, 100);
+
+
+      },
       error => {
-        console.log(error);
-  
+        console.log("eee", error);
+
       }
     );
-    
+
   }
- 
-  
+
+
 
   dataURLtoFile(dataURL: string, filename: string): File {
     const arr = dataURL.split(',');

@@ -43,7 +43,12 @@ export class AddPostComponent implements OnInit {
   addPost() {
     console.log('data', this.addForm.value, this.f)
     if (this.f['sujet'].hasError('required') || this.f['contenu'].hasError('required')) {
-      alert('fr')
+      Swal.fire({
+        icon: 'error',
+        title: 'Something went wrong',
+        text: 'fields required!',
+        // footer: '<a href="">Why do I have this issue?</a>'
+      })
     } else {
       const formData = new FormData();
 

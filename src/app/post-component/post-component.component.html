@@ -68,32 +68,41 @@
                                 <div class="comment-content">
                                     <p class="comment-author">{{ comment.coment_utilisateurs?.nom_user }} {{
                                         comment.coment_utilisateurs?.prenom_user }}</p>
-                                    <p style="margin-left: -80%;">{{ comment.contenu_commentaire }}</p>
+                                    <p style="margin-left: -40%;">{{ comment.contenu_commentaire }}</p>
                                     <p style="margin-left: 50%;margin-top: -20%">{{ comment.date_creation |
                                         date:'yyyy-MM-dd ' }}</p>
                                     <button mat-icon-button color="warn" style="margin-right: 30%;"
                                         aria-label="Example icon button with a heart icon"
                                         (click)="likeComment(comment)">
-                                        <mat-icon style="margin-left: 200%; color: red; cursor: pointer;">{{ comment.liked
+                                        <mat-icon style="margin-left: 400%; color: red; cursor: pointer;">{{ comment.liked
                                             === false ?
                                             'favorite_border' : 'favorite' }}</mat-icon>
                                     </button>
                                     <button mat-icon-button color="black" style="margin-right: 20%;"
                                         aria-label="Example icon button with a heart icon"
                                         (click)="toggleCommentResponseVisibility(comment)">
-                                        <mat-icon style="margin-left: 10%; margin-top: -10%; cursor: pointer; color: #86B817;">
+                                        <mat-icon style="margin-left: 200%; margin-top: -10%; cursor: pointer; color: #86B817;">
                                             comment</mat-icon>
                                     </button>
                                     <div class="d-flex mb-2" *ngIf="comment.commentResponse">
                                         <div class="card-block" style="width: 100%;">
+                                            <div class="row" *ngFor="let response of responseTab">
+                                                <div class="user-icon">
+                                                    <img src="assets/img/man.png" alt="User Avatar" />
+                                                </div>
+                                            <p style="margin-left: -40%;">{{ response.contentCommentaire }}</p>
+                                            <p style="margin-left: 50%;margin-top: -10%">{{ response.date |
+                                                date:'yyyy-MM-dd ' }}</p>
+                                       
+                                            </div>
                                             <div class="row">
                                                 <div class="col-9">
                                                     <input class="comment-textarea" placeholder="reply ..." rows="3"
-                                                        style="width: 90%; margin-right: 70%;">
+                                                        style="width: 90%; margin-right: 70%;" [(ngModel)]="responseComment">
                                                 </div>
                                                 <div class="col-3">
                                                     <button class="btn btn-sm btn-primary comment-button" type="button"
-                                                        (click)="addComment(item)" style="margin-left: -55%;">
+                                                        (click)="addCommentResponse(item)" style="margin-left: -55%;">
                                                         Comment</button>
                                                 </div>
                                             </div>

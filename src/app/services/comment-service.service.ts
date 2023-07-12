@@ -17,6 +17,15 @@ export class CommentServiceService {
       }); 
 
   }
+  addResponse(comment: Commentaire, idUser = 1, idPost: any,idCommentParent:any) {
+
+    return this.http.post(`http://127.0.0.1:8082/CampProject/comments/add/${idUser}/${idPost}/${idCommentParent}`
+      , {
+        "contenu_commentaire": comment,
+        "date_creation": new Date()
+      }); 
+
+  }
   getCommentById(idComment:any){
     return this.http.get<Comment[]>(`http://127.0.0.1:8082/CampProject/comments/get/all/${idComment}`);
     
